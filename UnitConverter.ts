@@ -6,7 +6,7 @@ Class for a measurement unit converter that uses a graph
 where each vertex is a unit and each edge is a multiplier.
 Using a graph allows the class to convert between any two
 units from the same measurement even if there is no
-edge (multiplier) between using other common
+edge (multiplier) between them using other common
 verticies (units).
 */
 export default class UnitConverter {

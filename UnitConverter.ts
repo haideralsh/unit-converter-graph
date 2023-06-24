@@ -33,9 +33,7 @@ export default class UnitConverter {
 		converstionMultiplier: number;
 		revertMultiplier: number;
 	}) {
-		if (!this.units.has(from) || !this.units.has(to)) {
-			throw new Error(`${from} or ${to} units are unknown`);
-		}
+		this.verifyUnitsOrThrow(from, to);
 
 		this.units.set(from, {
 			...this.units.get(from),
@@ -49,9 +47,7 @@ export default class UnitConverter {
 	}
 
 	convert(value: number, { from, to }: { from: string; to: string }) {
-		if (!this.units.has(from) || !this.units.has(to)) {
-			throw new Error(`${from} or ${to} units are unknown`);
-		}
+		this.verifyUnitsOrThrow(from, to);
 
 		const multipliers = this.units.get(from)!;
 		const directMultiplier = multipliers?.[to];
@@ -66,5 +62,15 @@ export default class UnitConverter {
 		throw new Error(
 			`The "${from}" and "${to}" units are not for the same measurment. Example: you are trying to convert between a weight and a length unit.`,
 		);
+	}
+
+	private verifyUnitsOrThrow(
+		from: string,
+		to: string,
+		error: Error = new Error(`${from} or ${to} units are unknown`),
+	) {
+		if (!this.units.has(from) || !this.units.has(to)) {
+			throw error;
+		}
 	}
 }

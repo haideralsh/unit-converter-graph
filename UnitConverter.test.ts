@@ -38,7 +38,7 @@ describe("UnitConverter", () => {
 		});
 	});
 
-	describe("addUnit", () => {
+	describe("addConverstion", () => {
 		it("allows adding a converstion between any two units", () => {
 			let converterConfig: ConverstionsConfig = [
 				{
@@ -80,7 +80,7 @@ describe("UnitConverter", () => {
 		});
 	});
 
-	describe("addUnit", () => {
+	describe("convert", () => {
 		it("converts between two units with a direct converstion and back", () => {
 			let converterConfig: ConverstionsConfig = [
 				{
